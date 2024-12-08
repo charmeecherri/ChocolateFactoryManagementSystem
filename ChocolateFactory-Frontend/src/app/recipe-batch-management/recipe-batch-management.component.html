@@ -1,0 +1,100 @@
+<div class="container mx-auto px-40 bg-[#A1887F] min-h-screen">
+  <h1 class="text-4xl font-bold text-center text-brown-800 mb-2">Recipe Batch Management</h1>
+
+  <!-- Link to Recipes Page -->
+  <div class="text-center mb-2">
+    <button
+      (click)="navigateToRecipes()"
+      class="px-6 py-3 bg- text-white font-bold rounded-lg hover:bg-[#A0522D] transition duration-300"
+    >
+      View Available Recipes
+    </button>
+  </div>
+
+  <!-- Add Recipe Section -->
+  <div class=" bg-brown-800 rounded-lg p-6">
+    <h2 class="text-2xl font-semibold text-white mb-6">Add New Recipe</h2>
+
+    <!-- Form -->
+    <form (ngSubmit)="addRecipe()" class="space-y-6">
+      <!-- Product ID Dropdown -->
+      <div>
+        <label for="productId" class="block text-white mb-2 font-medium">Product</label>
+        <select
+          id="productId"
+          [(ngModel)]="newRecipe.productId"
+          name="productId"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2691E] bg-[#FFF3E0]"
+          required
+        >
+          <option *ngFor="let product of availableProducts" [value]="product.productId">
+            {{ product.productName }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Ingredients Selection -->
+      <div>
+        <label class="block text-white mb-2 font-medium">Select Ingredients</label>
+        <div class="grid grid-cols-2 gap-4 max-h-48 overflow-auto border rounded-md p-4">
+          <div *ngFor="let material of rawMaterials" class="flex items-center justify-between p-2 border-b ">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                [checked]="isIngredientSelected(material.materialId)"
+                (change)="toggleIngredientSelection(material, $event)"
+                class="text-[#8B4513] focus:ring-[#D2691E]"
+              />
+              <span class="text-white">{{ material.name }}</span>
+            </label>
+            <input
+              *ngIf="isIngredientSelected(material.materialId)"
+              type="number"
+              placeholder="Qty"
+              class="w-20 px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2691E] bg-[#FFF3E0]"
+              (input)="updateIngredientQuantity(material, $event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantity Per Batch -->
+      <div>
+        <label for="quantityPerBatch" class="block text-white mb-2 font-medium">Quantity Per Batch</label>
+        <input
+          type="text"
+          id="quantityPerBatch"
+          [(ngModel)]="newRecipe.quantityPerBatch"
+          name="quantityPerBatch"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2691E] bg-[#FFF3E0]"
+          placeholder="e.g., 2kg"
+          required
+        />
+      </div>
+
+      <!-- Instructions -->
+      <div>
+        <label for="instructions" class="block text-white mb-2 font-medium">Instructions</label>
+        <textarea
+          id="instructions"
+          [(ngModel)]="newRecipe.instructions"
+          name="instructions"
+          rows="4"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2691E] bg-[#FFF3E0]"
+          placeholder="Enter instructions"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="w-full py-3 bg-[#8B4513] text-white text-xl font-semibold rounded-lg hover:bg-[#A0522D] transition duration-300"
+        >
+          Add Recipe
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

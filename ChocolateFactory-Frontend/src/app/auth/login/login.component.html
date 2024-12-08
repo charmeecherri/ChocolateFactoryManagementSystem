@@ -1,0 +1,90 @@
+<div
+  class="login-container bg-cover bg-center min-h-screen "
+  style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZmX3TpFZmXhp4iMimExnQxn0t0MIczGKK4w&s');">
+  <div class="flex justify-center items-center min-h-screen bg-black/60">
+    
+    <form
+      (ngSubmit)="onSubmit()"
+      class="bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] p-8 rounded-lg shadow-2xl w-full sm:w-96 space-y-6 text-white"
+    >
+      <!-- Logo or Decorative Header -->
+      <div class="text-center">
+        <h1 class="text-4xl font-bold font-serif text-yellow-500">Chocolate Factory</h1>
+        <p class="text-sm italic text-yellow-300 mt-2">
+          Manage your operations with ease
+        </p>
+      </div>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username" class="block text-lg font-medium text-yellow-300">
+          Username
+        </label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+          placeholder="Enter your username"
+          required
+          class="w-full p-3 border border-gray-600 rounded-md bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="block text-lg font-medium text-yellow-300">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          required
+          class="w-full p-3 border border-gray-600 rounded-md bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Role Dropdown -->
+      <div class="form-group  ">
+        <label for="role" class="block text-lg font-medium text-yellow-300 ">
+          Role
+        </label>
+        <select
+          id="role"
+          name="role"
+          [(ngModel)]="role"
+          required
+          class="w-full p-3 border border-gray-600 rounded-md bg-dark text-brown-800 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        >
+          <option value="" disabled selected>Select your role</option>
+          <option value="FactoryManager">Factory Manager</option>
+          <option value="QualityController">Quality Controller</option>
+          <option value="ProductionSupervisor">Production Supervisor</option>
+          <option value="Staff">Warehouse Staff</option>
+          <option value="SalesRepresentative">Sales Representative</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 rounded-md transition duration-200"
+        >
+          Login
+        </button>
+      </div>
+
+      <!-- Register Link -->
+      <div class="text-center text-sm mt-4">
+        <span>Don't have an account? </span>
+        <a [routerLink]="['/register']" class="text-yellow-400 font-bold hover:underline">
+          Register
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

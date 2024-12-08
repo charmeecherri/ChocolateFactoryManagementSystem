@@ -1,0 +1,46 @@
+<div class="relative min-h-screen bg-cover bg-center" style="background-image: url('/assets/chocolate-bg.jpg');">
+    <!-- Overlay for blur effect -->
+    <div class="absolute inset-0 bg-gray-600 backdrop-blur-md"></div>
+  
+    <!-- Main Content -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- Navbar -->
+      <nav class="bg-brown-800 text-white shadow-lg flex justify-between items-center px-6 py-4">
+        <div class="text-2xl font-bold">🍫 Chocolate Factory</div>
+        <div>
+            <button 
+            *ngIf="!isLoggedOut" 
+            class="bg-[#b45309] hover:bg-yellow-400 text-white px-6 py-2 rounded-md" 
+            (click)="logout()">
+            Logout
+          </button>
+        </div>
+      </nav>
+  
+      <!-- Main Content Area -->
+      <div class="flex flex-col lg:flex-row p-6 space-y-4 lg:space-x-4">
+        <!-- Card for Schedule Production -->
+        <div class="flex justify-center lg:w-1/2 w-full">
+          <div class="w-full max-w-xs bg-white rounded-lg shadow-lg border-2 border-brown-800 hover:shadow-xl transition duration-300 cursor-pointer"
+               (click)="navigateTo('production-planning')">
+            <div class="p-6 text-center">
+              <h2 class="text-xl font-bold text-brown-800">Schedule Production</h2>
+              <p class="mt-2 text-gray-700">Plan and manage production schedules efficiently.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Card for View Recipes -->
+        <div class="flex justify-center lg:w-1/2 w-full">
+          <div class="w-full max-w-xs bg-white rounded-lg shadow-lg border-2 border-brown-800 hover:shadow-xl transition duration-300 cursor-pointer"
+               (click)="navigateTo('recipes')">
+            <div class="p-6 text-center">
+              <h2 class="text-xl font-bold text-brown-800">View Recipes</h2>
+              <p class="mt-2 text-gray-700">Explore and manage product recipes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

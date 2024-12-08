@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Maintenance and Equipment Management</h1>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Record ID</th>
+          <th>Equipment ID</th>
+          <th>Maintenance Date</th>
+          <th>Technician</th>
+          <th>Details</th>
+          <th>Next Scheduled Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of maintenanceRecords">
+          <td>{{ record.recordId }}</td>
+          <td>{{ record.equipmentId }}</td>
+          <td>{{ record.maintenanceDate }}</td>
+          <td>{{ record.technician }}</td>
+          <td>{{ record.details }}</td>
+          <td>{{ record.nextScheduledDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

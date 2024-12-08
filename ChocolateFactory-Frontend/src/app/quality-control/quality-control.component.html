@@ -1,0 +1,116 @@
+<div class="container mx-auto px-60 mt-20 " *ngIf="userRole === 'QualityController' || userRole==='FactoryManager'; else unauthorized">
+  <h1 class="text-3xl font-bold mb-6">Quality Control Dashboard</h1>
+
+  <div *ngIf="completedProducts.length>0;else noProducts">
+    <h2 class="text-xl font-semibold mb-4">Completed Products</h2>
+    <table class="table-auto w-full border border-gray-200 mb-6 ">
+      <thead>
+        <tr class="bg-[#a16207]">
+          <th class="border px-4 py-2">Schedule ID</th>
+          <th class="border px-4 py-2">Product ID</th>
+          <th class="border px-4 py-2">Start Date</th>
+          <th class="border px-4 py-2">End Date</th>
+          <th class="border px-4 py-2">Shift</th>
+          <th class="border px-4 py-2">Status</th>
+          <th class="border px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of completedProducts" class="hover:bg-gray-50 bg-[#fdba74]">
+          <td class="border px-4 py-2">{{ product.scheduleId }}</td>
+          <td class="border px-4 py-2">{{ product.productId }}</td>
+          <td class="border px-4 py-2">{{ product.startDate | date }}</td>
+          <td class="border px-4 py-2">{{ product.endDate | date }}</td>
+          <td class="border px-4 py-2">{{ product.shift }}</td>
+          <td class="border px-4 py-2">{{ product.status }}</td>
+          <td class="border px-4 py-2">
+            <button
+              class=" hover:bg-[#a16207]  bg-[#d97706]text-white px-4 py-2 rounded"
+              (click)="selectProduct(product)"
+            >
+              Inspect
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noProducts>
+    <p class="text-gray-500">No completed products available for inspection.</p>
+  </ng-template>
+
+  <div *ngIf="selectedProduct" class="border border-gray-200 p-4 rounded shadow-md bg-[#fed7aa]">
+    <h3 class="text-lg font-semibold mb-4">Inspection Form</h3>
+    <form (submit)="submitInspection()">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="batchId">Batch ID</label>
+        <input
+          class="border border-gray-300 rounded w-full py-2 px-3"
+          id="batchId"
+          type="number"
+          [(ngModel)]="inspectionForm.batchId"
+          name="batchId"
+          readonly
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="inspectorId">Inspector ID</label>
+        <input
+          class="border border-gray-300 rounded w-full py-2 px-3"
+          id="inspectorId"
+          type="number"
+          [(ngModel)]="inspectionForm.inspectorId"
+          name="inspectorId"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="inspectionDate">Inspection Date</label>
+        <input
+          class="border border-gray-300 rounded w-full py-2 px-3"
+          id="inspectionDate"
+          type="date"
+          [(ngModel)]="inspectionForm.inspectionDate"
+          name="inspectionDate"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-2" for="testResults">Test Results</label>
+        <select
+          class="border border-gray-300 rounded w-full py-2 px-3"
+          id="testResults"
+          [(ngModel)]="inspectionForm.testResults"
+          name="testResults"
+        >
+          <option value="passed">Approved</option>
+          <option value="failed">Rejected</option>
+        </select>
+      </div>
+
+      <div class="flex space-x-4">
+        <button
+          type="submit"
+          class="hover:bg-green-600  bg-gray-500 px-4 py-2 rounded"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+          (click)="resetForm()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #unauthorized>
+  <div class="container mx-auto p-4 text-center">
+    <h2 class="text-2xl font-bold text-red-600">Access Denied</h2>
+    <p class="mt-4">You do not have permission to view this page.</p>
+  </div>
+</ng-template>

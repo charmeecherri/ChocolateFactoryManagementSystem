@@ -1,0 +1,44 @@
+<div class="min-h-screen bg-brown-800 px-80 ">
+    <!-- Header -->
+    <h1 class="text-3xl font-bold text-center text-white mb-6 ">Product Management</h1>
+  
+    <!-- Products List -->
+    <div class="bg-[#fdba74] shadow rounded-lg p-6 mb-8 justify-center ">
+      <h2 class="text-xl font-semibold text-brown-700 mb-4">Available Products</h2>
+      <ul class="space-y-3">
+        <li
+          *ngFor="let product of products"
+          class="flex justify-between items-center bg-gray-100 p-4 rounded-md shadow-sm"
+        >
+          <span>{{ product.productName }}</span>
+          <button
+            *ngIf="isFactoryManager"
+            class="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-500"
+            (click)="deleteProduct(product.productId)"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Add Product Form -->
+    <div *ngIf="isFactoryManager" class="bg-[#fdba74] shadow rounded-lg p-6">
+      <h2 class="text-xl font-semibold text-brown-700 mb-4">Add a New Product</h2>
+      <div class="flex space-x-3">
+        <input
+          [(ngModel)]="newProductName"
+          type="text"
+          placeholder="Enter product name"
+          class="flex-1 p-2 border rounded-md focus:outline-none focus:ring focus:ring-yellow-400"
+        />
+        <button
+          (click)="addProduct()"
+          class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-500"
+        >
+          Add Product
+        </button>
+      </div>
+    </div>
+  </div>
+  

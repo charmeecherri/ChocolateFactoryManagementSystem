@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Reporting and Analytics</h1>
+  
+    <h2>Real-Time Metrics</h2>
+    <ul>
+      <li><strong>Production Output:</strong> {{ realTimeMetrics.productionOutput }}</li>
+      <li><strong>Sales Targets:</strong> {{ realTimeMetrics.salesTargets }}</li>
+      <li><strong>Defect Rates:</strong> {{ realTimeMetrics.defectRates }}</li>
+    </ul>
+  
+    <h2>Reports</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Report ID</th>
+          <th>Type</th>
+          <th>Generated Date</th>
+          <th>Created By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of reports">
+          <td>{{ report.reportId }}</td>
+          <td>{{ report.type }}</td>
+          <td>{{ report.generatedDate }}</td>
+          <td>{{ report.createdBy }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

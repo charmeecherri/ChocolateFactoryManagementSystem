@@ -1,0 +1,83 @@
+.login-container {
+  width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9e4a13c4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.form-actions button:hover:not(:disabled) {
+  background-color: #181a1c71;
+}
+
+/* Responsive Styles */
+@media (max-width: 640px) {
+  .login-container {
+      margin: 20px auto;
+      padding: 10px;
+  }
+
+  .form-group input,
+  .form-group select {
+      font-size: 16px;
+      padding: 12px;
+  }
+
+  .form-actions button {
+      padding: 12px 24px;
+      font-size: 18px;
+  }
+
+  .w-full {
+      width: 100%;
+  }
+
+  .sm:w-96 {
+      width: 100%;
+  }
+}

@@ -1,0 +1,134 @@
+<div class="container  px-40 ">
+    <h1 class="text-2xl font-bold mb-6">Packaging Management</h1>
+  
+    <!-- Approved Products Section -->
+    <section class="mb-8 ">
+      <h2 class="text-xl font-semibold mb-4">Approved Products</h2>
+      <div *ngIf="approvedProducts.length > 0; else noApprovedProducts">
+        <table class="table-auto border-collapse px-16 justify-center  border-dark">
+          <thead class="bg-gray-100">
+            <tr class="bg-[#b45309]">
+              <th class="border border-gray-200 px-4 py-2">Batch ID</th>
+              <th class="border border-gray-200 px-4 py-2">Product ID</th>
+              <th class="border border-gray-200 px-4 py-2">Product Name</th>
+              <th class="border border-gray-200 px-4 py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[#fdba74]">
+            <tr *ngFor="let product of approvedProducts">
+              <td class="border border-gray-200  text-dark px-4 py-2">{{ product.batchId }}</td>
+              <td class="border border-gray-200  text-dark px-4 py-2">{{ product.batch.product.productId }}</td>
+              <td class="border border-gray-200  text-dark px-4 py-2">{{ product.batch.product.productName }}</td>
+              <td class="border border-gray-200  text-dark px-4 py-2">
+                <button
+                  class="bg-[#b45309] text-white px-4 py-2 rounded"
+                  (click)="selectProduct(product)"
+                >
+                  Package
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noApprovedProducts>
+        <p class="text-gray-500">No approved products available for packaging.</p>
+      </ng-template>
+    </section>
+  
+    <!-- Packaging Form Section -->
+    <section *ngIf="selectedProduct" class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Package Product (Batch ID: {{ selectedProduct.batchId }})</h2>
+      <form (ngSubmit)="submitPackaging()" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Company Name / Brand Name</label>
+          <input
+            type="text"
+            class="border border-gray-300 rounded px-4 py-2 w-full"
+            [(ngModel)]="packagingForm.companyName"
+            name="companyName"
+            placeholder="Enter company or brand name"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Quantity</label>
+          <input
+            type="number"
+            class="border border-gray-300 rounded px-4 py-2 w-full"
+            [(ngModel)]="packagingForm.quantity"
+            name="quantity"
+            min="1"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Packaging Date</label>
+          <input
+            type="date"
+            class="border border-gray-300 rounded px-4 py-2 w-full"
+            [(ngModel)]="packagingForm.packagingDate"
+            name="packagingDate"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Expiry Date</label>
+          <input
+            type="date"
+            class="border border-gray-300 rounded px-4 py-2 w-full"
+            [(ngModel)]="packagingForm.expiryDate"
+            name="expiryDate"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Warehouse Location</label>
+          <input
+            type="text"
+            class="border border-gray-300 rounded px-4 py-2 w-full"
+            [(ngModel)]="packagingForm.warehouseLocation"
+            name="warehouseLocation"
+            placeholder="Enter warehouse location"
+            required
+          />
+        </div>
+        <button
+        type="submit"
+        class="bg-green-500 text-white px-4 py-2 rounded"
+      >
+        Submit Packaging
+      </button>
+        
+      </form>
+    </section>
+  
+    <!-- Finished Goods Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Finished Goods</h2>
+      <div *ngIf="finishedGoods.length > 0; else noFinishedGoods">
+        <table class="table-auto w-85 border-dark">
+          <thead class="bg-gray-100">
+            <tr class="bg-[#b45309]">
+              <th class="border border-gray-200 px-4 py-2">Packaging ID</th>
+              <th class="border border-gray-200 px-4 py-2">Batch ID</th>
+              <th class="border border-gray-200 px-4 py-2">Quantity</th>
+              <th class="border border-gray-200 px-4 py-2">Warehouse Location</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[#fdba74]">
+            <tr *ngFor="let good of finishedGoods">
+              <td class="border border-gray-200 px-4 py-2">{{ good.packagingId }}</td>
+              <td class="border border-gray-200 px-4 py-2">{{ good.batchId }}</td>
+              <td class="border border-gray-200 px-4 py-2">{{ good.quantity }}</td>
+              <td class="border border-gray-200 px-4 py-2">{{ good.warehouseLocation }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noFinishedGoods>
+        <p class="text-gray-500">No finished goods available.</p>
+      </ng-template>
+    </section>
+  </div>
+  

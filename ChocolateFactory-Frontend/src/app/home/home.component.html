@@ -1,0 +1,42 @@
+<div class="relative min-h-screen bg-cover bg-center" style="background-image: url('/assets/chocolate-bg.jpg');">
+    <!-- Overlay for blur effect -->
+    <div class="absolute inset-0 bg-gray-600 backdrop-blur-md"></div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+        <!-- Navbar -->
+        <nav class="bg-brown-800 text-white shadow-lg flex justify-between items-center px-6 py-4">
+            <div class="text-2xl font-bold">🍫 Chocolate Factory</div>
+            <div>
+                <button class="bg-[#b45309] hover:bg-yellow-400 text-white px-6 py-2 rounded-md mr-4" (click)="navigateTo('login')">Login</button>
+                <button class="bg-[#b45309] hover:bg-yellow-400 text-white px-6 py-2 rounded-md" (click)="navigateTo('register')">Register</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="flex flex-1 flex-col lg:flex-row">
+            <!-- Sidebar Menu -->
+            <aside class="bg-brown-700 text-white w-full lg:w-64 p-4 flex flex-col">
+                <h2 class="text-xl font-bold mb-4">Menu</h2>
+                <ul class="space-y-3">
+                    <li *ngFor="let section of menuItems" 
+                        class="p-3 hover:bg-brown-600 rounded-md cursor-pointer"
+                        (click)="navigateTo(section.route)">
+                        {{ section.name }}
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Hero Section -->
+            <main class="flex-1 py-7 flex flex-col items-center justify-center bg-white bg-opacity-80 rounded-lg shadow-lg mx-50 my-4">
+                <h1 class="text-4xl text-brown-800 font-extrabold text-center mb-6">
+                    Welcome to the Chocolate Factory Management System
+                </h1>
+                <img src="https://www.thespruceeats.com/thmb/bgXevbBHq7SI0_8Dd3YohqkDRho=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cocoa-beans-and-chocolate-on-wooden-background-649046044-5a8f468dff1b780037929b44.jpg" alt="Chocolate Factory" class="rounded-lg shadow-2xl w-full max-w-2xl"/>
+                <p class="text-lg text-gray-700 mt-4 text-center">
+                    Efficiently manage your chocolate production and sales processes.
+                </p>
+            </main>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+
+/* Import Tailwind's component classes (e.g., forms, buttons, etc.) */
+@tailwind components;
+
+/* Import Tailwind's utility classes (grid, flex, spacing, etc.) */
+@tailwind utilities;
+
+  
+
+
+
+
+  

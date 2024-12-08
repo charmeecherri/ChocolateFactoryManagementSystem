@@ -1,0 +1,15 @@
+<div class="flex">
+    <aside class="bg-brown-700 text-white w-64 p-4 flex flex-col">
+      <h2 class="text-xl font-bold mb-4">Menu</h2>
+      <ul class="space-y-3">
+        <li
+          *ngFor="let section of menuItems"
+          class="p-3 hover:bg-brown-600 rounded-md cursor-pointer"
+          (click)="navigateTo(section.route)"
+        >
+          {{ section.name }}
+        </li>
+      </ul>
+    </aside>
+    <app-hero-section></app-hero-section>
+  </div>

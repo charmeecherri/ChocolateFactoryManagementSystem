@@ -1,0 +1,118 @@
+<div
+  class="registration-container min-h-screen flex items-center justify-center bg-cover bg-center"
+  style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb2jVTNYQQpSJ7gW7HyYsn2-BCaprL_uaPQ&s');"
+>
+  <!-- Translucent Chocolate-Themed Form -->
+  <div class="bg-[#3e2723]/80 p-8 rounded-lg shadow-2xl w-96 space-y-6 text-white">
+    <form (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-yellow-500">Register</h2>
+        <p class="text-sm italic text-yellow-300 mt-2">
+          Join the Chocolate World!
+        </p>
+      </div>
+
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name" class="block text-lg font-medium">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          [(ngModel)]="name"
+          placeholder="Enter your name"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white placeholder-[#d7ccc8] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="block text-lg font-medium">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white placeholder-[#d7ccc8] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username" class="block text-lg font-medium">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+          placeholder="Choose a username"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white placeholder-[#d7ccc8] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="block text-lg font-medium">Set Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Set your password"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white placeholder-[#d7ccc8] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword" class="block text-lg font-medium">
+          Confirm Password
+        </label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          [(ngModel)]="confirmPassword"
+          placeholder="Confirm your password"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white placeholder-[#d7ccc8] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Role Dropdown -->
+      <div class="form-group">
+        <label for="role" class="block text-lg font-medium">Register as</label>
+        <select
+          id="role"
+          name="role"
+          [(ngModel)]="role"
+          required
+          class="w-full p-3 border border-[#6d4c41] rounded-md bg-[#4e342e] text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        >
+          <option value="" disabled selected>Select your role</option>
+          <option value="FactoryManager">Factory Manager</option>
+          <option value="QualityController">Quality Controller</option>
+          <option value="ProductionSupervisor">Production Supervisor</option>
+          <option value="staff">Warehouse Staff</option>
+          <option value="SalesRepresentative">Sales Representative</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 rounded-md transition duration-200"
+        >
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

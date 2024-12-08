@@ -1,0 +1,57 @@
+<div class="container">
+    <h1>Warehouse Management</h1>
+  
+    <!-- Form to Add Warehouses -->
+    <form (ngSubmit)="addWarehouse()">
+      <div class="form-group">
+        <label for="warehouseId">Warehouse ID</label>
+        <input type="number" id="warehouseId" [(ngModel)]="newWarehouse.warehouseId" name="warehouseId" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" [(ngModel)]="newWarehouse.location" name="location" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input type="number" id="capacity" [(ngModel)]="newWarehouse.capacity" name="capacity" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="managerId">Manager ID</label>
+        <input type="number" id="managerId" [(ngModel)]="newWarehouse.managerId" name="managerId" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="currentStockLevel">Current Stock Level</label>
+        <input type="number" id="currentStockLevel" [(ngModel)]="newWarehouse.currentStockLevel" name="currentStockLevel" required />
+      </div>
+  
+      <button type="submit">Add Warehouse</button>
+    </form>
+  
+    <!-- Table for Warehouses -->
+    <h2>Warehouses</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Warehouse ID</th>
+          <th>Location</th>
+          <th>Capacity</th>
+          <th>Manager ID</th>
+          <th>Current Stock Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let warehouse of warehouses">
+          <td>{{ warehouse.warehouseId }}</td>
+          <td>{{ warehouse.location }}</td>
+          <td>{{ warehouse.capacity }}</td>
+          <td>{{ warehouse.managerId }}</td>
+          <td>{{ warehouse.currentStockLevel }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

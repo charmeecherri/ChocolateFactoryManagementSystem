@@ -1,0 +1,27 @@
+<div class="container mx-auto p-8 bg-brown-800 min-h-screen">
+  <h1 class="text-4xl font-bold text-center text-white mb-8">Recipe List</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      class="bg-[#fed7aa] shadow-md rounded-lg p-6 hover:shadow-lg transition duration-300"
+      *ngFor="let recipe of recipes"
+    >
+      <h3 class="text-xl font-bold text-orange-500 mb-2">{{ recipe.productName }}</h3>
+      <p class="text-brown-800 mb-1">
+        <strong>Quantity:</strong> {{ recipe.quantityPerBatch }}
+      </p>
+      <p class="text-brown-800 mb-1">
+        <strong>Instructions:</strong> {{ recipe.instructions }}
+      </p>
+      <div class="text-brown-800">
+        <strong>Ingredients:</strong>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
